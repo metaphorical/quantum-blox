@@ -1,0 +1,12 @@
+{
+    "eqeqeq": true,
+    "esnext": true,
+    "debug": true,
+
+    "node": true,
+
+
+    "undef": true,
+    "unused": true,
+    "predef": [ "window", "document", "logger", "className", "describe", "it", "assert" ]
+}

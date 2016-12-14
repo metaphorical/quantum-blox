@@ -1,0 +1,6 @@
+:global {
+    .mainContent {
+        width: 70%;
+        margin: 1em auto;
+    }
+}

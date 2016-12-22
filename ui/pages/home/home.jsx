@@ -3,7 +3,7 @@ import globalStyles from '../../general-styles/global.css';
 
 import ExampleComponent from '../../components/example';
 
-import Navigation from '../../navigation.js';
+import Navigation from '../../components/navigation';
 
 export default function() {
     return (

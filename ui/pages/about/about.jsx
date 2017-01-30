@@ -9,8 +9,7 @@ export default function() {
     return (
             <div className="mainContent">
                 <Navigation />
-                <h1>Hi there</h1>
-                <h2> Here is your example component</h2>
-                <ExampleComponent name="Example" />
+                <h1>About page</h1>
+                <h2> This is your about page </h2>
             </div>);
 }

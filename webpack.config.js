@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const fs = require('fs');
 
 //Use text extraction plugin to get all the css in separate file
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -11,24 +10,30 @@ module.exports = {
     context: __dirname + "/",
     //Since key is used as a name of a file, I use it to add multiple output points by joining path and
     //concatinating with name that includes new path (pushing it all to public/js, but sorting into static and app folders
-    entry: {
-        "main": "./ui/main.js"
-    },
+    entry: [
+        'webpack-hot-middleware/client',
+        'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
+        'webpack/hot/only-dev-server',
+        "./ui/main.js"
+    ],
     output: {
-        path: path.join(__dirname, 'static/js'),
-        filename: "[name].bundle.js"
+        path: path.join(__dirname, 'static'),
+        filename: 'bundle.js',
+        publicPath: '/static/'
     },
     module: {
         loaders: [
             // Babel loader with added react preset, react 0.14+ and babel 6+ wont work together w/o this
             {
                 test:/\.(js|jsx)?$/,
-                loader: "babel",
+                loaders: ["react-hot", 'babel?presets[]=react,presets[]=es2015,plugins[]=transform-object-assign'],
                 exclude: /node_modules/,
-                query: {
-                    presets:['react', 'es2015'],
-                    plugins: ['transform-object-assign']
-                }
+                // We use two loaders above, for dev server so we can not use clean and neat syntax below 
+                // Since webpack does not know which loader queries apply to. 
+                // query: {
+                //     presets:['react', 'es2015'],
+                //     plugins: ['transform-object-assign']
+                // }
             },
             {
                 test:/\.json$/,
@@ -37,8 +42,7 @@ module.exports = {
             // Post-css loader setup, to be able to bundle all the code for the components together
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader',
-                    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
+                loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize' + JSON.stringify({discardComments: {removeAll: true}}) + '!postcss-loader'
             },
             {
                 test: /\.woff$/,
@@ -79,6 +83,7 @@ module.exports = {
                 APP_ENV: JSON.stringify('browser')
             }
         }),
+        new webpack.HotModuleReplacementPlugin(),
         new WebpackNotifierPlugin()
     ]
 };

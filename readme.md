@@ -1,4 +1,3 @@
-[[https://github.com/metaphorical/quantum-blox/blob/master/static/img/quantum_logo_full.svg|alt=quantum-blox]]
 # Quantum blox - modular UI boilerplate in react
 
 ## What is it

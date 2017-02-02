@@ -1,6 +1,19 @@
 :global {
-    .mainContent {
-        width: 70%;
-        margin: 1em auto;
+    * {
+        box-sizing: border-box
+    }
+    .container {
+        lost-utility: clearfix;
+        /*lost-column: 4/5;*/
+        lost-center: 1200px;
+        & .sidebar {
+            lost-column: 1/5;
+            border-radius: 3px;
+            padding: 20px;
+            background-color: #ccc;
+        }
+        & .mainContent {
+            lost-column: 4/5;
+        }
     }
 }

@@ -10,10 +10,12 @@ import Logo from '../logo';
 import styles from './navigation.css';
 
 const Navigation = () => 
-    <nav>
-        <Logo />
-        <Link activeClassName={styles.active} to="/" > Home </Link>
-        <Link activeClassName={styles.active} to="/about" > About </Link>
-    </nav>;
+    <div className={styles.container}>
+        <nav>
+            <Logo />
+            <Link activeClassName={styles.active} to="/" > Home </Link>
+            <Link activeClassName={styles.active} to="/about" > About </Link>
+        </nav>
+    </div>
 
 export default Navigation;

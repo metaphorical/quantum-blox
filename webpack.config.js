@@ -47,6 +47,22 @@ module.exports = {
             {
                 test: /\.woff$/,
                 loader: 'url'
+            },
+            {
+                test: /\.(png|jpg)?$/,
+                loader: 'url',
+                query: {
+                    limit: 25000,
+                    name: "[hash].[ext]"
+                }
+            },
+            {
+                test: /\.svg$/,
+                loader: 'file-loader',
+                query: {
+                    limit: 25000,
+                    name: "[hash].[ext]"
+                }
             }
         ]
     },
@@ -54,11 +70,12 @@ module.exports = {
     // since they are executed in sequence
     postcss: function(webpack) {
         return [
+            require('lost'),
             // This adds all @import files to the watchlist of webpack
             // https://github.com/postcss/postcss-loader#integration-with-postcss-import
             require('postcss-import')({
                 addDependencyTo: webpack,
-                path: ['./app/client/general-styles/lib/', './app/client/']
+                path: ['./ui/general-styles/', './ui/']
             }),
             require('postcss-custom-properties'),
             require('autoprefixer'),

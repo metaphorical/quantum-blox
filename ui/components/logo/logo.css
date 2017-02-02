@@ -1,8 +1,8 @@
-.container {
-    width: 80%;
+.logo {
+    lost-column: 1/8;
+    height: 100px;
     padding: 15px;
 
-    /*border: 1px solid #990000;*/
-    background-color: #ccc;
+    background: url('../../../static/img/quantum_logo_full.svg') no-repeat;
     border-radius: 5px;
 }

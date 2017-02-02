@@ -8,7 +8,6 @@
  * 
  */
 import ReactDOM from 'react-dom';
-import {Route, Router, Link, hashHistory} from 'react-router';
 
 import App from "./app";
 

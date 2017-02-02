@@ -7,10 +7,15 @@ import Navigation from '../../components/navigation';
 
 export default function() {
     return (
-            <div className="mainContent">
+            <div className="container">
                 <Navigation />
-                <h1>Hi there</h1>
-                <h2> Here is your example component</h2>
-                <ExampleComponent name="Example" />
+                <div className="mainContent">
+                    <h1>Hi there</h1>
+                    <h2> Here is your example component</h2>
+                    <ExampleComponent name="Example" />
+                </div>
+                <div className="sidebar">
+                Sidebar
+                </div>
             </div>);
 }

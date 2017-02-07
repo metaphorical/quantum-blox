@@ -14,7 +14,7 @@ const Navigation = () =>
         <nav>
             <Logo />
             <Link activeClassName={styles.active} to="/" > Home </Link>
-            <Link activeClassName={styles.active} to="/about" > About </Link>
+            <Link activeClassName={styles.active} to="/docs" > Documentation </Link>
         </nav>
     </div>
 

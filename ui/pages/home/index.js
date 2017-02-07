@@ -3,7 +3,7 @@
 import React from 'react';
 import homeView from './home.jsx';
 
-class Home extends React.Component{
+class HomePage extends React.Component{
     constructor(props) {
         super(props);
         this.view = homeView;
@@ -22,4 +22,4 @@ class Home extends React.Component{
 *  Also, directly calling react component when parsing to string (for server side rendering)
 *  causes an error
 */
-export default React.createFactory(Home);
+export default HomePage;

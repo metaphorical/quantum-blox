@@ -1,12 +1,12 @@
 "use strict";
 
 import React from 'react';
-import aboutView from './about.jsx';
+import documentationView from './docs.jsx';
 
-class About extends React.Component{
+class DocumentationPage extends React.Component{
     constructor(props) {
         super(props);
-        this.view = aboutView;
+        this.view = documentationView;
 		this.state = {};
 
     }
@@ -22,4 +22,4 @@ class About extends React.Component{
 *  Also, directly calling react component when parsing to string (for server side rendering)
 *  causes an error
 */
-export default React.createFactory(About);
+export default DocumentationPage;

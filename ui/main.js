@@ -8,10 +8,11 @@
  * 
  */
 import ReactDOM from 'react-dom';
+import { createElement } from 'react';
 
 import App from "./app";
 
 
 
-ReactDOM.render(App(), window.document.getElementById('app'));
+ReactDOM.render(createElement(App, {}), window.document.getElementById('app'));
 

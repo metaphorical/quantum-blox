@@ -12,8 +12,8 @@ module.exports = {
     //concatinating with name that includes new path (pushing it all to public/js, but sorting into static and app folders
     entry: [
         'webpack-hot-middleware/client',
-        'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
-        'webpack/hot/only-dev-server',
+        // 'webpack-dev-server/client?http://0.0.0.0:3000/__webpack_hmr', // WebpackDevServer host and port
+        // 'webpack/hot/only-dev-server',
         "./ui/main.js"
     ],
     output: {
@@ -84,7 +84,7 @@ module.exports = {
             require('postcss-pxtorem')
         ];
     },
-    devtool: "#inline-source-map",
+    devtool: 'cheap-module-eval-source-map',
     plugins: [
         // Plugin for writing css bundle loaded in components
         new ExtractTextPlugin('../css/style.css', { allChunks: true }),

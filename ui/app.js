@@ -12,20 +12,20 @@ import {Route, Router, hashHistory} from 'react-router';
 
 import Navigation from './components/navigation';
 
-import Home from "./pages/home";
-import About from "./pages/about";
+import HomePage from "./pages/home";
+import DocumentationPage from "./pages/docs";
 
 
 class App extends React.Component {
     render() {
         return (
             <Router history={ hashHistory }>
-                <Route path="/" component={ Home }></Route>
-                <Route path="/about" component={ About }></Route>
+                <Route path="/" component={ HomePage }></Route>
+                <Route path="/docs" component={ DocumentationPage }></Route>
             </Router>
                 
         );
     }
 }
 
-export default React.createFactory(App);
+export default App;

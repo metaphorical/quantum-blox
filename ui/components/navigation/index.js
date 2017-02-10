@@ -13,8 +13,10 @@ const Navigation = () =>
     <div className={styles.container}>
         <nav>
             <Logo />
-            <Link activeClassName={styles.active} to="/" > Home </Link>
-            <Link activeClassName={styles.active} to="/docs" > Documentation </Link>
+            <div className={styles.navbar}>
+                <Link activeClassName={styles.active} to="/" > Home </Link>
+                <Link activeClassName={styles.active} to="/docs" > Documentation </Link>
+            </div>
         </nav>
     </div>
 

@@ -1,9 +1,15 @@
-.active {
-    padding: 5px;
-    border-radius: 2px;
-    background-color: lightblue;
-    color: black;
+.navbar {
+    & .active {
+        padding: 5px;
+        border-radius: 2px;
+        background-color: lightblue;
+        color: black;
+    }
+    display: block;
+    width: 100%;
 }
 .container {
     lost-column: 1;
+    background-color: #ffe47c;
+    padding: 20px 20px 0 20px;
 }

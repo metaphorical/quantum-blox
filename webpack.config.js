@@ -45,7 +45,7 @@ module.exports = {
                 loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize' + JSON.stringify({discardComments: {removeAll: true}}) + '!postcss-loader'
             },
             {
-                test: /\.woff$/,
+                test: /\.(woff|woff2|ttf|eps)$/,
                 loader: 'url'
             },
             {

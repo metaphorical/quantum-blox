@@ -8,11 +8,20 @@
         background: url('../../../static/img/quantum_logo_1.svg') no-repeat;
         background-position: center;
         border-radius: 5px;
+        &:hover {
+            background: url('../../../static/img/quantum_logo_full.svg') no-repeat;
+            background-position: center;
+            border-radius: 5px;
+        }
     }
     h1,
     h2 {
         text-align: center;
         color: white;
+    }
+    h1 {
+        line-height: 1;
+        margin: 5px 0;
     }
     h2 {
         font-size: 14px;

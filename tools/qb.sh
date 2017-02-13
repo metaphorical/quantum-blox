@@ -19,20 +19,19 @@ DIR="$( dirname "${BASH_SOURCE[0]}" )"
 #
 
 boilerplate_component() {
-    componentfolder=`$PWD/components/$4`
+    componentfolder="./ui/components/$4"
     templatecss=`cat $DIR/boilerplates/$1-$2/$3/sample.css`
-    log DIR
 
     mkdir $componentfolder
     touch $componentfolder/$4.css
 
-    if [ -f "$PWD/components/$4/$4.css" ]
+    if [ -f "./ui/components/$4/$4.css" ]
     then 
         log Creating
         echo "$templatecss" > "$componentfolder/$4.css"
     fi
 
-    printf "$templatecss""
+    # printf "$templatecss""
 }
 
 

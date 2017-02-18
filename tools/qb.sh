@@ -19,13 +19,54 @@ DIR="$( dirname "${BASH_SOURCE[0]}" )"
 #
 
 boilerplate_component() {
-    componentfolder="./ui/components/$4"
-    
-    boilerplatefolder="$DIR/boilerplates/$1-$2/$3"
 
-    jsxpath="$DIR/boilerplates/$1-$2/$3/sample.jsx"
-    jspath="$DIR/boilerplates/$1-$2/$3/index.js"
-    csspath="$DIR/boilerplates/$1-$2/$3/sample.css"
+    echo "first: $1"
+    echo "second: $2"
+    echo "3rd: $3"
+    echo "4th: $4"
+
+    if [ ! $1 ] 
+    then
+        log "You have to, at least, provide name for the component" 
+        exit 66
+    else
+        name=$1
+    fi
+
+    if [ ! $2 ] 
+    then
+        log "Defaulting type to simple" 
+        type='simple'
+    else
+
+        type=$2
+    fi
+
+    if [ ! $3 ] 
+    then
+        log "Defaulting kind to full" 
+        kind='full'
+    else
+        kind=$3
+    fi
+
+
+    if [ ! $4 ] 
+    then
+        log "Defaulting approach to classes" 
+        approach='classes'
+    else
+        approach=$4
+    fi
+
+
+    componentfolder="./ui/components/$name"
+    
+    boilerplatefolder="$DIR/boilerplates/$type-$kind/$approach"
+
+    jsxpath="$DIR/boilerplates/$type-$kind/$approach/sample.jsx"
+    jspath="$DIR/boilerplates/$type-$kind/$approach/index.js"
+    csspath="$DIR/boilerplates/$type-$kind/$approach/sample.css"
    
     if [ ! -d $boilerplatefolder ]
     then
@@ -34,7 +75,7 @@ boilerplate_component() {
         exit 66
     fi
 
-    samplecss=`cat $DIR/boilerplates/$1-$2/$3/sample.css`
+    samplecss=`cat $DIR/boilerplates/$type-$kind/$approach/sample.css`
     
 
 
@@ -44,23 +85,36 @@ boilerplate_component() {
         if [ -f $csspath ]
         then 
             log "Creating CSS"
-            touch $componentfolder/$4.css
-            echo "$samplecss" > "$componentfolder/$4.css"
+            touch $componentfolder/$name.css
+            echo "$samplecss" > "$componentfolder/$name.css"
         fi
 
         if [ -f $jspath ]
         then 
             log "Creating JS"
             touch $jspath
-            sed "s/sample/$4/g" <$jspath >"$componentfolder/index.js"
+            sed "s/sample/$name/g" <$jspath >"$componentfolder/index.js"
         fi
 
         if [ -f $jsxpath ]
         then 
             log "Creating JSX"
             touch $jsxpath
-            sed "s/sample/$4/g" <$jsxpath >"$componentfolder/$4.jsx"
+            sed "s/sample/$name/g" <$jsxpath >"$componentfolder/$name.jsx"
         fi
+
+        printf "\n\n"
+        log "============================="
+        log "New component created"
+        log "============================="
+        log "Name: $name"
+        log "Type: $type"
+        log "Kind: $kind"
+        log "Approach: $approach"
+        log "================================"
+        printf "\n\n"
+        log "\n\n Component is added to your ui/components folder, you can now start your development"
+        log "Note: it is not added aywhere, that is up to you"
 
     else
         log "COMPONET NAME TAKEN, Please choose another name";

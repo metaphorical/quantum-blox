@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 #
-# Log <type> <msg>
+# Log <msg>
 #
 log() {
-  printf "  \e[0;32m[qB]\033[0m : \033[0m%s\033[0m\n" $1
+  printf "  \e[0;32m[qB]\033[0m : \033[0m%s\033[0m\n" "$1"
 }
 
 # 
@@ -20,19 +20,56 @@ DIR="$( dirname "${BASH_SOURCE[0]}" )"
 
 boilerplate_component() {
     componentfolder="./ui/components/$4"
-    templatecss=`cat $DIR/boilerplates/$1-$2/$3/sample.css`
+    
+    boilerplatefolder="$DIR/boilerplates/$1-$2/$3"
 
-    mkdir $componentfolder
-    touch $componentfolder/$4.css
-
-    if [ -f "./ui/components/$4/$4.css" ]
-    then 
-        log Creating
-        echo "$templatecss" > "$componentfolder/$4.css"
+    jsxpath="$DIR/boilerplates/$1-$2/$3/sample.jsx"
+    jspath="$DIR/boilerplates/$1-$2/$3/index.js"
+    csspath="$DIR/boilerplates/$1-$2/$3/sample.css"
+   
+    if [ ! -d $boilerplatefolder ]
+    then
+        echo "THESE ARE NOT THE DROIDS YOU ARE LOOKING FOR"
+        echo "you supplied wrong parameters, there are no components of type you requested in boilerplate collection";
+        exit 66
     fi
 
-    # printf "$templatecss""
+    samplecss=`cat $DIR/boilerplates/$1-$2/$3/sample.css`
+    
+
+
+    if [ ! -d $componentfolder ]
+    then
+        mkdir $componentfolder
+        if [ -f $csspath ]
+        then 
+            log "Creating CSS"
+            touch $componentfolder/$4.css
+            echo "$samplecss" > "$componentfolder/$4.css"
+        fi
+
+        if [ -f $jspath ]
+        then 
+            log "Creating JS"
+            touch $jspath
+            sed "s/sample/$4/g" <$jspath >"$componentfolder/index.js"
+        fi
+
+        if [ -f $jsxpath ]
+        then 
+            log "Creating JSX"
+            touch $jsxpath
+            sed "s/sample/$4/g" <$jsxpath >"$componentfolder/$4.jsx"
+        fi
+
+    else
+        log "COMPONET NAME TAKEN, Please choose another name";
+    fi
 }
+
+# create_component() {
+
+# }
 
 
 if test $# -eq 0; then

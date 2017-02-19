@@ -20,10 +20,10 @@ DIR="$( dirname "${BASH_SOURCE[0]}" )"
 
 boilerplate_component() {
 
-    echo "first: $1"
-    echo "second: $2"
-    echo "3rd: $3"
-    echo "4th: $4"
+    # echo "first: $1"
+    # echo "second: $2"
+    # echo "3rd: $3"
+    # echo "4th: $4"
 
     if [ ! $1 ] 
     then
@@ -68,6 +68,12 @@ boilerplate_component() {
     jspath="$DIR/boilerplates/$type-$kind/$approach/index.js"
     csspath="$DIR/boilerplates/$type-$kind/$approach/sample.css"
    
+    # Use these to debug
+
+    # echo "jspath: $jspath"
+    # echo "jsxpath: $jsxpath"
+    # echo "csspath: $csspath"
+
     if [ ! -d $boilerplatefolder ]
     then
         echo "THESE ARE NOT THE DROIDS YOU ARE LOOKING FOR"
@@ -91,9 +97,14 @@ boilerplate_component() {
 
         if [ -f $jspath ]
         then 
+            uppercaseName="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"
             log "Creating JS"
             touch $jspath
-            sed "s/sample/$name/g" <$jspath >"$componentfolder/index.js"
+            sed "s/sample/$name/g" <$jspath >"$componentfolder/index.tmp.js"
+
+            # all files are named in lowercase but classes are named with uppercase first
+            sed "s/Sample/$uppercaseName/g" <"$componentfolder/index.tmp.js" >"$componentfolder/index.js"
+            rm "$componentfolder/index.tmp.js"
         fi
 
         if [ -f $jsxpath ]
@@ -107,13 +118,13 @@ boilerplate_component() {
         log "============================="
         log "New component created"
         log "============================="
-        log "Name: $name"
+        log "Name (file name): $name"
         log "Type: $type"
         log "Kind: $kind"
         log "Approach: $approach"
         log "================================"
         printf "\n\n"
-        log "\n\n Component is added to your ui/components folder, you can now start your development"
+        log " Component is added to your ui/components folder, you can now start your development"
         log "Note: it is not added aywhere, that is up to you"
 
     else

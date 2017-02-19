@@ -3,7 +3,7 @@ import React from 'react';
 import DOM from './sample.jsx';
 
 
-export default class Welcome extends React.Component {
+export default class SampleComponent extends React.Component {
   constructor(props) {
     super(props);
     this.view = DOM;

@@ -97,12 +97,14 @@ boilerplate_component() {
 
         if [ -f $jspath ]
         then 
+
+            # all files are named in lowercase but classes are named with uppercase first
+            # so we need to add that tat the end
             uppercaseName="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"
             log "Creating JS"
             touch $jspath
             sed "s/sample/$name/g" <$jspath >"$componentfolder/index.tmp.js"
 
-            # all files are named in lowercase but classes are named with uppercase first
             sed "s/Sample/$uppercaseName/g" <"$componentfolder/index.tmp.js" >"$componentfolder/index.js"
             rm "$componentfolder/index.tmp.js"
         fi

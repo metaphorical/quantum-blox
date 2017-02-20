@@ -10,6 +10,9 @@
 import ReactDOM from 'react-dom';
 import { createElement } from 'react';
 
+import globalStyles from './general-styles/global.css';
+
+
 import App from "./app";
 
 

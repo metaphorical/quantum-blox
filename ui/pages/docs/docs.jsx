@@ -1,7 +1,4 @@
 import React from 'react';
-import globalStyles from '../../general-styles/global.css';
-
-import ExampleComponent from '../../components/example';
 
 import Navigation from '../../components/navigation';
 

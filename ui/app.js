@@ -16,16 +16,15 @@ import HomePage from "./pages/home";
 import DocumentationPage from "./pages/docs";
 
 
-class App extends React.Component {
-    render() {
-        return (
-            <Router history={ hashHistory }>
-                <Route path="/" component={ HomePage }></Route>
-                <Route path="/docs" component={ DocumentationPage }></Route>
-            </Router>
+
+const App = ({ store }) => (
+            <Provider store={store}>
+                <Router history={ hashHistory }>
+                    <Route path="/" component={ HomePage }></Route>
+                    <Route path="/docs" component={ DocumentationPage }></Route>
+                </Router>
+            </Provider>
                 
         );
-    }
-}
 
 export default App;

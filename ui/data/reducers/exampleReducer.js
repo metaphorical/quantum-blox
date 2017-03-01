@@ -1,14 +1,13 @@
-const ExampleReducer = (state = {}, action) => {
+const globalCounterReducer = (state = 0, action) => {
+    let newState = state;
     switch (action.type) {
-        case 'ADD_LOADING': 
-            let newState = JSON.parse(JSON.stringify(state));
-            if (newState.loadingList instanceof Array) {
-                    newState.loadingList.push(action.loading);
-            }
-            return newState;
+        case 'INCREMENT_GLOBAL': 
+            return newState+1;
+        case 'DECREMENT_GLOBAL': 
+            return newState-1;
         default:
             return state;
     }
 }
 
-export default ExampleReducer;
+export default globalCounterReducer;

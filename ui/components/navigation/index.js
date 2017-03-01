@@ -16,6 +16,7 @@ const Navigation = () =>
             <div className={styles.navbar}>
                 <Link activeClassName={styles.active} to="/" > Home </Link>
                 <Link activeClassName={styles.active} to="/docs" > Documentation </Link>
+                <Link activeClassName={styles.active} to="/examples" > Examples </Link>
             </div>
         </nav>
     </div>

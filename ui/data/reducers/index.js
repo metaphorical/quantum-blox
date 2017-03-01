@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
-import exampleReducer from './exampleReducer.js';
+import globalCounterReducer from './exampleReducer.js';
 
+/**
+ * here we define key in store that reducer will control
+ */
 const appDataReducers = combineReducers({
-  exampleReducer
+  globalCounter: globalCounterReducer
 });
 
 export default appDataReducers;

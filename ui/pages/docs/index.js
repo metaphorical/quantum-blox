@@ -2,6 +2,7 @@
 
 import React from 'react';
 import documentationView from './docs.jsx';
+import { connect } from 'react-redux';
 
 class DocumentationPage extends React.Component{
     constructor(props) {
@@ -16,4 +17,8 @@ class DocumentationPage extends React.Component{
     }
 }
 
-export default DocumentationPage;
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps)(DocumentationPage);

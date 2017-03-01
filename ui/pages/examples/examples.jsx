@@ -7,7 +7,9 @@ export default function() {
         <DefaultLayout
             globalCounter={this.props.globalCounter}
         >
-            <h1>Hi there</h1>
+            <h1>Example components</h1>
+            <button onClick={this.increseGlobal}>Increse</button>
+            <button onClick={this.decreseGlobal}>Decrese</button>
         </DefaultLayout>
     );
 }

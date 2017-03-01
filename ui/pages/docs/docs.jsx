@@ -1,12 +1,10 @@
 import React from 'react';
 
-import Navigation from '../../components/navigation';
+import DefaultLayout from '../../layouts/default';
 
 export default function() {
     return (
-    <div>
-        <Navigation />
-        <div className="container">
+    <DefaultLayout>
             <div className="mainContent">
                 <h1>Documentaion page</h1>
                 <h2> QB docs will be here</h2>
@@ -14,7 +12,6 @@ export default function() {
             <div className="sidebar">
                 Docs Sidebar
             </div>
-        </div>
-    </div>
+   </DefaultLayout>
     );
 }

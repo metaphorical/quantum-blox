@@ -1,14 +1,13 @@
 "use strict";
 
 import React from 'react';
-import homeView from './home.jsx';
+import defaultView from './default.jsx';
 
-class HomePage extends React.Component{
+class DefaultLayout extends React.Component{
     constructor(props) {
         super(props);
-        this.view = homeView;
+        this.view = defaultView;
 		this.state = {};
-
     }
 
     render() {
@@ -16,4 +15,4 @@ class HomePage extends React.Component{
     }
 }
 
-export default HomePage;
+export default DefaultLayout;

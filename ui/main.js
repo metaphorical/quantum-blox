@@ -15,15 +15,26 @@ import globalStyles from './general-styles/global.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
 import appDataReducers from "./data/reducers";
+import rootSaga from './data/sagas';
 
 /**
- * This is what is where the data for the whole app will live
+ * App is using redux-saga for handling side effects (async calls) 
  */
+const sagaMiddleware = createSagaMiddleware();
 
-let store = createStore(appDataReducers);
+/**
+ * Store is single source of truth for the app, it is hub for all the data and data events
+ */
+let store = createStore(
+    appDataReducers, 
+    applyMiddleware(sagaMiddleware)
+    );
+
+sagaMiddleware.run(rootSaga);
 
 import App from "./app";
 

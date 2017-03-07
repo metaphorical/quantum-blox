@@ -26,7 +26,7 @@ module.exports = {
             // Babel loader with added react preset, react 0.14+ and babel 6+ wont work together w/o this
             {
                 test:/\.(js|jsx)?$/,
-                loaders: ["react-hot", 'babel?presets[]=react,presets[]=es2015,plugins[]=transform-object-assign'],
+                loaders: ["react-hot", 'babel?presets[]=react,presets[]=es2015,plugins[]=transform-object-assign,plugins[]=transform-runtime'],
                 exclude: /node_modules/,
                 // We use two loaders above, for dev server so we can not use clean and neat syntax below 
                 // Since webpack does not know which loader queries apply to. 

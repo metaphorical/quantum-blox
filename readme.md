@@ -23,10 +23,12 @@ App is then available at **[http://localhost:3000](http://localhost:3000)**
 
 * [ReactJS](https://facebook.github.io/react/) 
 * [React Router](https://github.com/ReactTraining/react-router)
-* [Redux](http://redux.js.org/) (soon)
+* [Redux](http://redux.js.org/)
+* [Redux-saga](https://redux-saga.github.io/redux-saga/)
+* [Axios](https://github.com/mzabriskie/axios)
 * [PostCSS](https://github.com/postcss)
 * [LostGrid](http://lostgrid.org/docs.html#getting-started)
-* [Webpack](https://webpack.js.org/) 1 (soon to be migrated to Webpack 2 when I confirm that it covers this use case good enough)
+* [Webpack](https://webpack.js.org/) 1 (soon to be migrated to Webpack 2)
 
 ## Modularity and separation
 

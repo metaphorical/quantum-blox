@@ -22,74 +22,119 @@ module.exports = {
         publicPath: '/static/'
     },
     module: {
-        loaders: [
+        rules: [
             // Babel loader with added react preset, react 0.14+ and babel 6+ wont work together w/o this
             {
                 test:/\.(js|jsx)?$/,
-                loaders: ["react-hot", 'babel?presets[]=react,presets[]=es2015,plugins[]=transform-object-assign,plugins[]=transform-runtime'],
+                use:[
+                    {
+                        loader: "react-hot-loader"
+                    },
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: ["react", ["es2015", {"modules": false}]],
+                            plugins: ["transform-object-assign", "transform-runtime"]
+                        }
+                    }
+                ],
                 exclude: /node_modules/,
-                // We use two loaders above, for dev server so we can not use clean and neat syntax below 
-                // Since webpack does not know which loader queries apply to. 
-                // query: {
-                //     presets:['react', 'es2015'],
-                //     plugins: ['transform-object-assign']
-                // }
+                
             },
             {
                 test:/\.json$/,
-                loader: "json-loader"
+                use:[
+                    {
+                        loader: "json-loader"
+                    }
+                ]
+                
             },
             // Post-css loader setup, to be able to bundle all the code for the components together
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize' + JSON.stringify({discardComments: {removeAll: true}}) + '!postcss-loader'
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1,
+                            modules: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                            minimize: {
+                                discardComments: {
+                                    removeAll: true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            // Order of postcss transforms is important
+                            // since they are executed in sequence
+                            plugins: function(webpack) {
+                                return [
+                                    require('lost'),
+                                    // This adds all @import files to the watchlist of webpack
+                                    // https://github.com/postcss/postcss-loader#integration-with-postcss-import
+                                    require('postcss-import')({
+                                        addDependencyTo: webpack,
+                                        path: ['./ui/general-styles/', './ui/']
+                                    }),
+                                    require('postcss-custom-properties'),
+                                    require('autoprefixer'),
+                                    require('postcss-nested'),
+                                    require('postcss-custom-media'),
+                                    require('postcss-pxtorem')
+                                ];
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(woff|woff2|ttf|eps)$/,
-                loader: 'url'
+                use: [{
+                    loader: 'url'
+                }]
             },
             {
                 test: /\.(png|jpg)?$/,
-                loader: 'url',
-                query: {
-                    limit: 25000,
-                    name: "[hash].[ext]"
-                }
+                use: [{
+                    loader: 'url',
+                    options: {
+                        query: {
+                            limit: 25000,
+                            name: "[hash].[ext]"
+                        }
+                    }
+                
+                }]
             },
             {
                 test: /\.svg$/,
-                loader: 'file-loader',
-                query: {
-                    limit: 25000,
-                    name: "[hash].[ext]"
-                }
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        query: {
+                            limit: 25000,
+                            name: "[hash].[ext]"
+                        }
+                    }
+                }]
             }
         ]
-    },
-    // Order of postcss transforms is important
-    // since they are executed in sequence
-    postcss: function(webpack) {
-        return [
-            require('lost'),
-            // This adds all @import files to the watchlist of webpack
-            // https://github.com/postcss/postcss-loader#integration-with-postcss-import
-            require('postcss-import')({
-                addDependencyTo: webpack,
-                path: ['./ui/general-styles/', './ui/']
-            }),
-            require('postcss-custom-properties'),
-            require('autoprefixer'),
-            require('postcss-nested'),
-            require('postcss-custom-media'),
-            require('postcss-pxtorem')
-        ];
     },
     devtool: 'cheap-module-eval-source-map',
     plugins: [
         // Plugin for writing css bundle loaded in components
-        new ExtractTextPlugin('../css/style.css', { allChunks: true }),
-        // new webpack.optimize.UglifyJsPlugin({minimize: true}),
-        new webpack.optimize.DedupePlugin(),
+        new ExtractTextPlugin({ 
+            filename: '../css/style.css', 
+            allChunks: true 
+        }),
         new webpack.DefinePlugin({
             // This is way to set or create global variables...
             // Will use it to check if React is rendered on server or on client side (in webpack or node)

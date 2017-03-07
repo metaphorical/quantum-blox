@@ -1,5 +1,8 @@
 # Quantum blox - modular UI boilerplate in react
 
+[![Build Status](https://travis-ci.org/metaphorical/quantum-blox.svg?branch=master)](https://travis-ci.org/metaphorical/quantum-blox)
+[![bitHound Overall Score](https://www.bithound.io/github/metaphorical/quantum-blox/badges/score.svg)](https://www.bithound.io/github/metaphorical/quantum-blox)
+
 ## What is it
 
 This is boilerplate for fully modular web UIs based on ReactJS + PostCSS with CSS Modules. Central piece is **Webpack**, which is connecting everything together, giving the technology that allows us to achieve full modularity and separation without any overhead. 

@@ -4,7 +4,8 @@
   "description": "Modular UI implementation in React, with full development boilerplate and custom webpack builds",
   "main": "index.js",
   "scripts": {
-    "start": "node dev-server.js"
+    "start": "node dev-server.js",
+    "serve-static": "python ./tools/serve-static.py 3000 static"
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,7 @@
     "autoprefixer": "^6.3.1",
     "babel": "^6.5.2",
     "babel-core": "^6.4.0",
-    "babel-loader": "^6.23.0",
+    "babel-loader": "^6.4.0",
     "babel-plugin-transform-object-assign": "^6.5.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.3.14",
@@ -55,7 +56,7 @@
     "postcss": "^5.2.6",
     "postcss-custom-media": "^5.0.1",
     "postcss-custom-properties": "^5.0.0",
-    "postcss-import": "^8.1.2",
+    "postcss-import": "^9.1.0",
     "postcss-loader": "^0.9.1",
     "postcss-mixins": "^4.0.1",
     "postcss-nested": "^1.0.0",

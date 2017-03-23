@@ -2,14 +2,32 @@
 
 const path = require('path');
 const webpack = require('webpack');
-
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
-const generateConf =  function (env) {
-    let config = {
+const postcssLoaders = [
+                        {
+                            loader: 'style-loader'
+                        },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules:true,
+                                importLoaders: 1,
+                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader'
+                        }
+                    ];
+
+module.exports = {
         name: 'client',
         context: __dirname + '/',
+        entry: [
+            'babel-polyfill',
+            './ui/main.js'
+        ],
         output: {
             path: path.join(__dirname, 'static'),
             filename: 'bundle.js'
@@ -29,14 +47,14 @@ const generateConf =  function (env) {
                     test: /\.(gif|png|jpg|svg)?$/,
                     loader: 'url-loader',
                     query: {
-                        limit: 10000,
-                        context: 'app/client/images',
-                        name: '../img/[path][name].[ext]',
+                        limit: 2500,
+                        context: 'static/img',
+                        name: '[path][name].[ext]',
                     }
                 },
                 {
                     test: /\.css$/,
-                    loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+                    use: postcssLoaders
                 },
                 {
                     test: /\.(woff|woff2)$/,
@@ -46,76 +64,18 @@ const generateConf =  function (env) {
         },
         resolve: {
             alias: {
-                app: path.resolve(__dirname, 'app'),
-                client: path.resolve(__dirname, 'app/client')
+                ui: path.resolve(__dirname, 'ui')
             }
         },
         plugins: [
             new webpack.DefinePlugin({
                 'process.env': {
-                    NODE_ENV: JSON.stringify('development'),
-                    APP_ENV: JSON.stringify('browser')
-                },
-                HMR_ENABLED: env.hmr === 'true' ? JSON.stringify('true') : JSON.stringify('false')
-            }),
-            new webpack.LoaderOptionsPlugin({
-                options: {
-                    postcss: [
-                        require('lost'),
-                        // This adds all @import files to the watchlist of webpack
-                        // https://github.com/postcss/postcss-loader#integration-with-postcss-import
-                        require('postcss-import')({
-                            addDependencyTo: webpack,
-                            path: ['./ui/general-styles/', './ui/']
-                        }),
-                        require('lost'),
-                        require('postcss-custom-properties'),
-                        require('autoprefixer'),
-                        require('postcss-nested'),
-                        require('postcss-custom-media'),
-                        require('postcss-pxtorem')
-                    ]
+                    NODE_ENV: JSON.stringify('development')
                 }
             }),
             new webpack.NamedModulesPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
             new WebpackNotifierPlugin(),
-        ],
-        devtool: 'eval'
-    };
-
-    config.entry = [
-        'babel-polyfill',
-        './ui/main.js'
-    ];
-
-    if (env.hmr === 'true') {
-        config.plugins.push(new webpack.HotModuleReplacementPlugin());
-
-        config.entry = [
-            'babel-polyfill',
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?http://localhost:3000',
-            "./ui/main.js"
-        ];
-
-        config.devServer = {
-            host: 'localhost',
-            port: 3000,
-            historyApiFallback: true,
-            hotOnly: true
-        };
-
-        config.output.publicPath = 'http://localhost:3000/js/';
-    } else {
-        config.plugins.push(new ExtractTextPlugin({
-            filename: '../css/style.css',
-            disable: false,
-            allChunks: true
-        }));
-    }
-
-    return config;
+        ]
 };
 
-module.exports = generateConf({hmr: false });

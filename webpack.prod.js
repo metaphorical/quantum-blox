@@ -2,8 +2,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
 const postcssLoaders = [
@@ -49,9 +47,9 @@ module.exports = {
                     test: /\.(gif|png|jpg|svg)?$/,
                     loader: 'url-loader',
                     query: {
-                        limit: 10000,
-                        context: 'app/client/images',
-                        name: '../img/[path][name].[ext]',
+                        limit: 2500,
+                        context: 'static/img',
+                        name: '[path][name].[ext]',
                     }
                 },
                 {
@@ -66,16 +64,10 @@ module.exports = {
         },
         resolve: {
             alias: {
-                app: path.resolve(__dirname, 'app'),
-                client: path.resolve(__dirname, 'app/client')
+                ui: path.resolve(__dirname, 'ui')
             }
         },
         plugins: [
-            new ExtractTextPlugin({
-                filename: '../style.css',
-                disable: false,
-                allChunks: true
-            }),
             new webpack.DefinePlugin({
                 'process.env': {
                     NODE_ENV: JSON.stringify('production')

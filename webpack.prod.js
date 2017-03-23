@@ -6,6 +6,23 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
+const postcssLoaders = [
+                        {
+                            loader: 'style-loader'
+                        },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules:true,
+                                importLoaders: 1,
+                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader'
+                        }
+                    ];
+
 module.exports = {
         name: 'client',
         context: __dirname + '/',
@@ -39,39 +56,7 @@ module.exports = {
                 },
                 {
                     test: /\.css$/,
-                    use: [
-                        {
-                            loader: 'style-loader'
-                        },
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules:true,
-                                importLoaders: 1,
-                                localIdentName: '[name]__[local]___[hash:base64:5]'
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: () => [
-                                    require('lost'),
-                                    // This adds all @import files to the watchlist of webpack
-                                    // https://github.com/postcss/postcss-loader#integration-with-postcss-import
-                                    require('postcss-import')({
-                                        addDependencyTo: webpack,
-                                        path: ['./ui/general-styles/', './ui/']
-                                    }),
-                                    require('lost'),
-                                    require('postcss-custom-properties'),
-                                    require('autoprefixer'),
-                                    require('postcss-nested'),
-                                    require('postcss-custom-media'),
-                                    require('postcss-pxtorem')
-                                ]
-                            }
-                        }
-                    ]
+                    use: postcssLoaders
                 },
                 {
                     test: /\.(woff|woff2)$/,

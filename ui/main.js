@@ -12,8 +12,8 @@ import globalStyles from './general-styles/global.css';
  * (for instance, if you are messing with inlined lazy loaded css hacks, this is your place)
  * 
  */
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createElement } from 'react';
+import render from 'react-dom';
 
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
@@ -38,7 +38,7 @@ sagaMiddleware.run(rootSaga);
 
 import App from "./app";
 
-ReactDOM.render(
-    React.createElement(App,  { store }), 
+render(
+    createElement(App,  { store }), 
     window.document.getElementById('app'));
 

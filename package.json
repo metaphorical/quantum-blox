@@ -7,7 +7,7 @@
     "start": "node dev-server.js",
     "build:prod": "./node_modules/.bin/webpack --config webpack.prod.js -p",
     "build:dev": "./node_modules/.bin/webpack",
-    "stats": "webpack --env production --profile --json > stats.json",
+    "build:analyze": "./node_modules/.bin/webpack --config webpack.analyze.js -p",
     "serve-static": "python ./tools/serve-static.py 3000 static"
   },
   "repository": {
@@ -29,6 +29,7 @@
   "homepage": "https://github.com/metaphorical/quantum-blox#readme",
   "dependencies": {
     "axios": "^0.15.3",
+    "babili": "0.0.12",
     "extract-text-webpack-plugin": "2.1.0",
     "lost": "^8.0.0",
     "react": "^15.4.1",

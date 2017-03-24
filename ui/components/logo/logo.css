@@ -5,11 +5,11 @@
         padding: 15px;
         float: none;
 
-        background: url('../../../static/img/quantum_logo_1.svg') no-repeat;
+        background: url('../../images/quantum_logo_1.svg') no-repeat;
         background-position: center;
         border-radius: 5px;
         &:hover {
-            background: url('../../../static/img/quantum_logo_full.svg') no-repeat;
+            background: url('../../images/quantum_logo_full.svg') no-repeat;
             background-position: center;
             border-radius: 5px;
         }

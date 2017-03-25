@@ -28,6 +28,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 /**
  * Store is single source of truth for the app, it is hub for all the data and data events
+ * 
+ * For long lasting processes we use redux-saga middleware.
  */
 let store = createStore(
     appDataReducers, 

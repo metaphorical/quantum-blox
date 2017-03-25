@@ -3,7 +3,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
-// const BabiliPlugin = require('babili-webpack-plugin');
 
 
 const postcssLoaders = require('./webpack/loaders/postcss');

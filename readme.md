@@ -13,14 +13,31 @@ To start, clone the repo and
 
 ```
 npm i 
-
-npm start
+```
+## Dev build, watch and serve
+To build dev code (unminified + sourcemaps)
+```
+npm run build: dev
+```
+To watch for changes and rebuild
+```
+npm run watch
 ```
 
-App is then available at **[http://localhost:3000](http://localhost:3000)**
+## Hot module reload
+work in progress...
+## Production build
+```
+npm run build:Production
+```
+## Serving built data
+To serve your App making it available at **[http://localhost:3000](http://localhost:3000)**
+```
+npm run serve-static
+```
+## GH pages deployment
+Work in progress
 
-
-**npm start runs webpack dev server with hot module replacement (HMR), which means that reloads after changes are fast and seamless**
 
 ## Technologies
 

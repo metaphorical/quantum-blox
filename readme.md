@@ -23,14 +23,28 @@ npm run build: dev
 ```
 To watch for changes and rebuild
 ```
-npm run watch
+npm run build:watch
 ```
 
 ## Hot module reload
 work in progress... After migrating from webpack 1 to 2 I hat ot take step back and review
 
 ## Running tests
-work in progress...
+
+### Single run
+```
+npm test
+```
+### Watch
+Watch for changes and reload tests (provides Jest-cli commands)
+```
+npm test:watch
+```
+### Show + generate coverage report
+Test code, genenerate html and JSON coverage and also output it in terminal
+```
+npm test:coverage
+```
 
 #Build size analysis
 Guves you html page with zoomable tree view of how your depencencies influence your build size dependencies.
@@ -67,6 +81,7 @@ npm run check-updates
 
 * [React Router](https://github.com/ReactTraining/react-router) - client side routing
 * [Redux-saga](https://redux-saga.github.io/redux-saga/) - CQRS sagas in Redux Middleware
+* [Jest](https://facebook.github.io/jest/) - Testing
 * [LostGrid](http://lostgrid.org/docs.html#getting-started) - PostCSS grid system
 * [Axios](https://github.com/mzabriskie/axios) - http 
 * [Webpack build analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) - analyzing build size

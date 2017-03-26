@@ -8,5 +8,5 @@
 
     "undef": true,
     "unused": true,
-    "predef": [ "window", "document", "logger", "className", "describe", "it", "assert" ]
+    "predef": [ "window", "document", "logger", "className", "describe", "it", "assert", "expect", "test" ]
 }

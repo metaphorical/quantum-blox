@@ -13,7 +13,7 @@ import globalStyles from './general-styles/global.css';
  * 
  */
 import { createElement } from 'react';
-import render from 'react-dom';
+import { render } from 'react-dom';
 
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';

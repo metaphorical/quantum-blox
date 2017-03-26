@@ -8,6 +8,7 @@
     "build:dev": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --watch",
     "build:analyze": "./node_modules/.bin/webpack --config webpack.analyze.js -p",
+    "check-updates": "./node_modules/.bin/npm-check-updates",
     "serve-static": "python ./tools/serve-static.py 3000 static"
   },
   "repository": {

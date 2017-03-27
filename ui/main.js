@@ -3,6 +3,9 @@
  */
 import globalStyles from './general-styles/global.css';
 
+if (module.hot) {
+  module.hot.accept();
+}
 /**
  * Everything just gets set up here, nothing more. 
  * 

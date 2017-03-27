@@ -20,7 +20,8 @@ module.exports = {
         },
         output: {
             path: path.join(__dirname, 'static/js'),
-            filename: '[name].bundle.js'
+            filename: '[name].bundle.js',
+            publicPath: '/static/'
         },
         module: {
             rules: [
@@ -28,11 +29,11 @@ module.exports = {
                     test: /\.(js|jsx)?$/,
                     exclude: /node_modules/,
                     use: [
-                        'react-hot-loader/webpack',
                         {
                             loader: 'babel-loader',
                             options: { presets: [ ['es2015', { modules: false }], 'react' ]  }
-                        }
+                        },
+                        'react-hot-loader/webpack'
                     ],
                 },
                 {
@@ -41,7 +42,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 2500,
-                            name: '../img/[name].[ext]'
+                            name: './img/[name].[ext]'
                         }
                     }]
                 },
@@ -55,7 +56,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 2500,
-                            name: '../fonts/[name].[ext]'
+                            name: './fonts/[name].[ext]'
                         }
                     }]
                 }

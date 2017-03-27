@@ -44,8 +44,7 @@
     "react-redux": "^5.0.3",
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
-    "redux-saga": "^0.14.3",
-    "reqwest": "^2.0.5"
+    "redux-saga": "^0.14.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.1",

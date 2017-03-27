@@ -10,7 +10,7 @@ import Logo from '../logo';
 import styles from './navigation.css';
 
 const Navigation = () => 
-    <div className={styles.container}>
+   ( <div className={styles.container}>
         <nav>
             <Logo />
             <div className={styles.navbar}>
@@ -19,6 +19,6 @@ const Navigation = () =>
                 <Link activeClassName={styles.active} to="/examples" > Examples </Link>
             </div>
         </nav>
-    </div>
+    </div> );
 
 export default Navigation;

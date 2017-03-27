@@ -58,11 +58,6 @@ module.exports = {
                 }
             ]
         },
-        resolve: {
-            alias: {
-                ui: path.resolve(__dirname, 'ui')
-            }
-        },
         plugins: [
             new webpack.DefinePlugin({
                 'process.env': {

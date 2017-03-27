@@ -7,6 +7,6 @@ const SampleView = function(props) {
         <div className={styles.container}>
             Hi from stateless
         </div>);
-}
+};
 
 export default SampleView;

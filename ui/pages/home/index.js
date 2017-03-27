@@ -11,10 +11,6 @@ class HomePage extends React.Component{
 		this.state = {};
     }
 
-    componentDidMount() {
-        const { dispatch, globalCounter } = this.props;
-    }
-
     render() {
         return this.view();
     }

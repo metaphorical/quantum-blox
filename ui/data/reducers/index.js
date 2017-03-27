@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import globalCounterReducer from './exampleReducer.js';
-import bggReducer from './bggReducer.js'
+import bggReducer from './bggReducer.js';
 
 /**
  * here we define key in store that reducer will control

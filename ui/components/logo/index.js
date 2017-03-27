@@ -9,6 +9,6 @@ const Logo = function(props) {
             <h1>Quantum blox</h1>
             <h2>Fast prototyping, production ready modular UI boilerplate</h2>
         </div>);
-}
+};
 
 export default Logo;

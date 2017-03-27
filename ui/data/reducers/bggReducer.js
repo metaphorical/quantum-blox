@@ -7,6 +7,6 @@ const bggReducer = (state = {}, action) => {
         default:
             return state;
     }
-}
+};
 
 export default bggReducer;

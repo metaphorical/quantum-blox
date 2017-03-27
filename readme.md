@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/metaphorical/quantum-blox.svg?branch=master)](https://travis-ci.org/metaphorical/quantum-blox)
 [![bitHound Overall Score](https://www.bithound.io/github/metaphorical/quantum-blox/badges/score.svg)](https://www.bithound.io/github/metaphorical/quantum-blox)
+[![bitHound Dependencies](https://www.bithound.io/github/metaphorical/quantum-blox/badges/dependencies.svg)](https://www.bithound.io/github/metaphorical/quantum-blox/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/metaphorical/quantum-blox/badges/devDependencies.svg)](https://www.bithound.io/github/metaphorical/quantum-blox/master/dependencies/npm)
 
 ## What is it
 

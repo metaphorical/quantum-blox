@@ -8,6 +8,6 @@ const globalCounterReducer = (state = 0, action) => {
         default:
             return state;
     }
-}
+};
 
 export default globalCounterReducer;

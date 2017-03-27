@@ -11,8 +11,6 @@ import { Provider } from 'react-redux';
 * or to always return same page in your router from server)
 */
 
-import Navigation from './components/navigation';
-
 import HomePage from "./pages/home";
 import DocumentationPage from "./pages/docs";
 import ExamplesPage from "./pages/examples";

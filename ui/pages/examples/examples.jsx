@@ -19,7 +19,7 @@ export default function() {
                     <ul>
                     {
                         this.props.bggHotGames.map((item, i) => {
-                          return   (<li key={item.i}>{item.name}</li>)
+                          return (<li key={i}>{item.name}</li>);
                         })
                     }
                     </ul>

@@ -4,6 +4,7 @@
   "description": "Modular UI implementation in React, with full development boilerplate and custom webpack builds",
   "main": "index.js",
   "scripts": {
+    "start": "node dev-server.js",
     "build:prod": "./node_modules/.bin/webpack --config webpack.prod.js -p",
     "build:dev": "./node_modules/.bin/webpack",
     "build:watch": "./node_modules/.bin/webpack --watch",

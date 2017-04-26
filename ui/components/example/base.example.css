@@ -1,0 +1,16 @@
+.container {
+    width: 300px;
+    padding: 40px 15px;
+
+
+    /*border: 1px solid #990000;*/
+    background-color:#ccc;
+    border-radius: 5px;
+
+}
+.half {
+    width: 45%;
+    display: block;
+    float: left;
+    padding: 15px;
+}

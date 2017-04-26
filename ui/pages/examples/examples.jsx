@@ -2,12 +2,17 @@ import React from 'react';
 
 import DefaultLayout from '../../layouts/default';
 
+import ExampleComponent from '../../components/example';
+
 export default function() {
     return (
         <DefaultLayout
             globalCounter={this.props.globalCounter}
         >
             <h1>Example components</h1>
+
+            <ExampleComponent />
+
             <button onClick={this.increseGlobal}>Increse</button>
             <button onClick={this.decreseGlobal}>Decrese</button>
             <aside>

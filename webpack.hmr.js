@@ -74,7 +74,7 @@ module.exports = {
             // new webpack.NoErrorsPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
-                    NODE_ENV: JSON.stringify('production')
+                    NODE_ENV: JSON.stringify('develop')
                 }
             }),
             new webpack.NamedModulesPlugin(),

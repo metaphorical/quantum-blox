@@ -1,9 +1,10 @@
 /**
  * 
  */
-import React, { PropTypes } from 'react';
-import {Route, Router, hashHistory} from 'react-router';
+import React from 'react';
+import {HashRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 /**
 * hashHistory is used instead of browserHistory for practical reasons
 * hashHistory has uglyer look to it (routes have /#/ prefix, but this routing works in basic setup, 
@@ -19,11 +20,13 @@ import ExamplesPage from "./pages/examples";
 
 const App = ({ store }) => (
             <Provider store={store}>
-                <Router history={ hashHistory }>
-                    <Route path="/" component={ HomePage }></Route>
-                    <Route path="/docs" component={ DocumentationPage }></Route>
-                    <Route path="/examples" component={ ExamplesPage }></Route>
-                </Router>
+                <HashRouter>
+                    <Switch>
+                        <Route path="/docs" component={ DocumentationPage }></Route>
+                        <Route path="/examples" component={ ExamplesPage }></Route>
+                        <Route path="/" component={ HomePage }></Route>
+                    </Switch>
+                </HashRouter>
             </Provider>
                 
         );

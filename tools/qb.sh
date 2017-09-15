@@ -15,7 +15,7 @@ DIR="$( dirname "${BASH_SOURCE[0]}" )"
 
 #
 # Create component
-# type complexity code-standard name 
+# name type complexity code-standard  
 #
 
 boilerplate_component() {

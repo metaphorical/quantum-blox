@@ -14,7 +14,7 @@ const Navigation = function(props) {
         <nav>
             <Logo />
             <div className={styles.navbar}>
-                <NavLink activeClassName={styles.active} to="/" > Home </NavLink>
+                <NavLink activeClassName={styles.active} to="/home" > Home </NavLink>
                 <NavLink activeClassName={styles.active} to="/docs" > Documentation </NavLink>
                 <NavLink activeClassName={styles.active} to="/examples" > Examples </NavLink>
             </div>
